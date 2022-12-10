@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1>KFC Restaurant</h1>
+    </div>
+    <div class="row" *ngIf="!isSubmission">
+        <div class="col-sm-3" *ngFor="let menu of menus">
+            <app-menu-card [Menu]="menu" (isSubmission)="update($event)"></app-menu-card>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="isSubmission">
+        <div class="col-md-6">
+            <div class="row">
+                <div>
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" required>
+                </div>
+                <br><br><br>
+                <div>
+                    <label for="name">Payment Option</label>
+                    <select class="form-control custom-select" name="payment">
+                        <option selected>Select the payment Option</option>
+                        <option value="0">Cash</option>
+                        <option value="1">Restaurant Ticket</option>
+                    </select>
+                </div><br><br><br>
+                <div>
+                    <button type="submit" class="btn btn-success" (click)="submit()">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

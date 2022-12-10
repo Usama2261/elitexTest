@@ -1,0 +1,12 @@
+.container{
+    padding: 10px;
+}
+
+.jumbotron{
+    background-color: rgb(245, 236, 108);
+}
+
+h1{
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
