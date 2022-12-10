@@ -1,20 +1,33 @@
 <div class="container">
     <div class="jumbotron">
         <h1>KFC Restaurant</h1>
+
     </div>
-    <div class="row" *ngIf="!isSubmission">
+    <div class="row functionButtons">
+        <div class="btn-group" role="group" style="width: 250px;">
+            <button type="button" class="btn btn-secondary" (click)="formType = 'Menu'">
+                <i class="fa-sharp fa-solid fa-arrow-left"></i>
+            </button>&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="formType = 'OrderList'">
+                Check Your Orders</button>
+          </div>
+        <span></span>
+        
+    </div>
+
+    <div class="row" *ngIf="formType == 'Menu'">
         <div class="col-sm-3" *ngFor="let menu of menus">
             <app-menu-card [Menu]="menu" (isSubmission)="update($event)"></app-menu-card>
         </div>
     </div>
 
 
-    <div class="row" *ngIf="isSubmission">
+    <div class="row" *ngIf="formType == 'Submit'">
         <div class="col-md-6">
             <div class="row">
                 <div>
                     <label for="name"><strong>Name</strong></label>
-                    <input class="form-control" type="text" required>
+                    <input class="form-control" type="text" value="{{order.clientName}}">
                 </div>
                 <br><br><br>
                 <div>
@@ -28,12 +41,14 @@
                 <div>
                     <label for="quantity"><strong>Quantity</strong></label>
                     <div class="input-group">
-                        <button [disabled]="quantity == 1" class="btn btn-danger" (click)="quantity = quantity - 1">
+                        <button [disabled]="order.quantity == 1" class="btn btn-danger"
+                            (click)="order.quantity = order.quantity - 1">
                             <i class="fa-solid fa-minus"></i>
                         </button>
-                        <input type="text" name="quant" class="form-control input-number" value="{{quantity}}" min="1">
+                        <input type="text" name="quant" class="form-control input-number" value="{{order.quantity}}"
+                            min="1">
                         <button class="btn btn-success">
-                            <i class="fa-solid fa-plus" (click)="quantity = quantity + 1"></i>
+                            <i class="fa-solid fa-plus" (click)="order.quantity = order.quantity + 1"></i>
                         </button>
                     </div>
                 </div><br><br><br>
@@ -45,19 +60,28 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row" *ngIf="formType == 'OrderList'">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let order of addedOrders">
+                {{order.clientName}} you order {{order.quantity}} {{order.orderProduct}}
+            </li>
+        </ul>
+    </div>
 </div>
 
 
 
 
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Thank You</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<p>Your Order Confirmed</p>
-	</div>
-	<div class="modal-footer">
-	</div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thank You</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>Your Order Confirmed</p>
+    </div>
+    <div class="modal-footer">
+    </div>
 </ng-template>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Menu } from '../Model/Menu';
+import { Order } from '../Model/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,14 @@ export class ElitexService {
     }
   ];
 
+  orders: any = [];
+
   getMenus(){
     return this.menus;
+  }
+
+  addOrder(order: Order){
+    debugger
+    this.orders.push(order);
   }
 }

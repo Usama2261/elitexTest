@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Menu } from '../Model/Menu';
+import { Order } from '../Model/Order';
 import { ElitexService } from '../shared/elitex.service';
 
 @Component({
@@ -11,33 +12,47 @@ import { ElitexService } from '../shared/elitex.service';
 })
 export class HomeComponent {
 
-menus: Menu[] = [];
-isSubmission: boolean = false;
-quantity: number = 1;
+  menus: Menu[] = [];
+  quantity: number = 1;
+  formType = "Menu";
 
-constructor(
-  private _elitexService: ElitexService,
-  config: NgbModalConfig, private modalService: NgbModal
-  ){
+  order: Order = new Order();
+
+  addedOrders: Order[] = [];
+
+  constructor(
+    private _elitexService: ElitexService,
+    config: NgbModalConfig, private modalService: NgbModal
+  ) {
     config.backdrop = 'static';
-		config.keyboard = false;
+    config.keyboard = false;
   }
 
-ngOnInit(){
-this.getMenus();
-}
+  ngOnInit() {
+    this.getMenus();
+    this.getOrders();
+  }
 
-getMenus(){
-  this.menus = this._elitexService.getMenus();
-}
+  getMenus() {
+    this.menus = this._elitexService.getMenus();
+  }
 
-update(event: any){
-  this.isSubmission = event;
-}
+  getOrders(){
+    this.addedOrders = this._elitexService.orders;
+  }
 
-submit(content: any){
-  this.isSubmission = false;
-  this.modalService.open(content);
-}
+  menuName: string = "";
+  update(menuName: any) {
+    this.formType = "Submit";
+    this.menuName = menuName;
+  }
+
+  submit(content: any) {
+    this.formType = "Menu";
+    this.order.orderProduct = this.menuName;
+    this._elitexService.addOrder(this.order); //Saving Orders
+    this.modalService.open(content);
+  }
+
 
 }

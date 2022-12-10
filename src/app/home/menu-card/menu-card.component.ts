@@ -9,10 +9,10 @@ import { Menu } from 'src/app/Model/Menu';
 export class MenuCardComponent {
 
   @Input() Menu: Menu = new Menu();
-  @Output() isSubmission = new EventEmitter<boolean>();
+  @Output() isSubmission = new EventEmitter<string>();
 
 
-  addToCart(){
-    this.isSubmission.emit(true)
+  addToCart(menuName: string){
+    this.isSubmission.emit(menuName);
   }
 }

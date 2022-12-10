@@ -4,7 +4,7 @@
       <h5 class="card-title">{{Menu.name}}</h5>
       <p class="card-text">{{Menu.description}}</p>
       <p class="card-text">Price: {{Menu.price}}</p>
-      <a (click)="addToCart()" class="btn btn-primary">Add to Cart</a>
+      <a (click)="addToCart(Menu.name)" class="btn btn-primary">Add to Cart</a>
     </div>
   </div>
 
