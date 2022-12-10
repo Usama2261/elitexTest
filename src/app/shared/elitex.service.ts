@@ -12,22 +12,26 @@ export class ElitexService {
     {
       name: "Pizza",
       imgPath: "../../../assets/pizza.jpg",
-      description: ""
+      description: "",
+      price:"5$"
     },
     {
       name: "Burger",
       imgPath: "../../../assets/burger.jpg",
-      description: ""
+      description: "",
+      price:"10$"
     },
     {
       name: "Chicken",
       imgPath: "../../../assets/chicken.jpg",
-      description: ""
+      description: "",
+      price:"15$"
     },
     {
       name: "Beef",
       imgPath: "../../../assets/beef.jpg",
-      description: ""
+      description: "",
+      price:"25$"
     }
   ];
 
