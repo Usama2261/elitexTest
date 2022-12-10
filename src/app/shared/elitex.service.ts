@@ -32,6 +32,42 @@ export class ElitexService {
       imgPath: "../../../assets/beef.jpg",
       description: ".....",
       price:"25$"
+    },
+    {
+      name: "Chicken Karahi",
+      imgPath: "../../../assets/beef.jpg",
+      description: ".....",
+      price:"25$"
+    },
+    {
+      name: "Kabab",
+      imgPath: "../../../assets/chicken.jpg",
+      description: ".....",
+      price:"25$"
+    },
+    {
+      name: "Cold Drink",
+      imgPath: "../../../assets/chicken.jpg",
+      description: ".....",
+      price:"25$"
+    },
+    {
+      name: "Tea",
+      imgPath: "../../../assets/chicken.jpg",
+      description: ".....",
+      price:"25$"
+    },
+    {
+      name: "Coffee",
+      imgPath: "../../../assets/chicken.jpg",
+      description: ".....",
+      price:"25$"
+    },
+    {
+      name: "Juices",
+      imgPath: "../../../assets/chicken.jpg",
+      description: ".....",
+      price:"25$"
     }
   ];
 

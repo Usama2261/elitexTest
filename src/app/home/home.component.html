@@ -13,12 +13,12 @@
         <div class="col-md-6">
             <div class="row">
                 <div>
-                    <label for="name">Name</label>
+                    <label for="name"><strong>Name</strong></label>
                     <input class="form-control" type="text" required>
                 </div>
                 <br><br><br>
                 <div>
-                    <label for="name">Payment Option</label>
+                    <label for="payment"><strong>Payment Option</strong></label>
                     <select class="form-control custom-select" name="payment">
                         <option selected>Select the payment Option</option>
                         <option value="0">Cash</option>
@@ -26,7 +26,19 @@
                     </select>
                 </div><br><br><br>
                 <div>
-                    <button type="submit" class="btn btn-success" (click)="submit()">
+                    <label for="quantity"><strong>Quantity</strong></label>
+                    <div class="input-group">
+                        <button [disabled]="quantity == 1" class="btn btn-danger" (click)="quantity = quantity - 1">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input type="text" name="quant" class="form-control input-number" value="{{quantity}}" min="1">
+                        <button class="btn btn-success">
+                            <i class="fa-solid fa-plus" (click)="quantity = quantity + 1"></i>
+                        </button>
+                    </div>
+                </div><br><br><br>
+                <div>
+                    <button type="submit" class="btn btn-success" (click)="submit(content)">
                         Submit
                     </button>
                 </div>
@@ -34,3 +46,18 @@
         </div>
     </div>
 </div>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Thank You</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>Your Order Confirmed</p>
+	</div>
+	<div class="modal-footer">
+	</div>
+</ng-template>
